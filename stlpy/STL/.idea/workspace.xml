@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="53dfec05-d57d-4073-8937-174bc3287e88" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/../../results_compare.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/formula.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gurobi/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gurobi/guroby_micp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/cartpole.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/config/default.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/default/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/default/train.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata1.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata11.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata12.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata13.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata14.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata15.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata16.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata17.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata18.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata19.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata2.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata20.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata3.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata4.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata5.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata6.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata7.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata8.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data/testdata9.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole/data_generation.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cartpole_dev.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../config/gurobi.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/gurobi.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../config/mosek.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/mosek.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_11.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_12.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/config/default_horizon_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default/test.p" beforeDir="false" afterPath="$PROJECT_DIR$/../../free_flyer/data/default/test.p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default/train.p" beforeDir="false" afterPath="$PROJECT_DIR$/../../free_flyer/data/default/train.p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_6/test_horizon_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_6/train_horizon_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_7/test_horizon_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_7/train_horizon_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_8/test_horizon_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_8/train_horizon_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_9/test_horizon_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/default_horizon_9/train_horizon_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata1.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata11.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata12.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata13.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata14.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata15.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata16.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata17.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata18.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata19.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata2.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata20.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata3.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata4.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata5.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata6.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata7.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata8.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data/testdata9.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/data_generation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../free_flyer/data_generation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/dump_data_horizon_.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/free_flyer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../free_flyer/free_flyer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/mosek_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/testfile_long_horizon_.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../free_flyer/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer_dev.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../method_test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../free_flyer_generalization.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../img/cart-pole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../img/dexterous_manipulation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../img/free-flyer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/config/default.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/default/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/default/train.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata1.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata11.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata12.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata13.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata14.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata15.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata16.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata17.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata18.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata19.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata2.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata20.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata3.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata4.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata5.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata6.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata7.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata8.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data/testdata9.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/data_generation.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/halton_sampling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/manipulation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manipulation_dev.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_cartpole_20200326_1757_3-layers_32-neurons.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_cartpole_20200326_1757_3-layers_32-neurons_classifier.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_cartpole_20200326_1757_3-layers_32-neurons_regressor.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_cartpole_20200326_1757_3-layers_32-neurons_results.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_free_flyer_20200406_0927_3-layers_128-neurons.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_free_flyer_20200406_0927_3-layers_128-neurons_classifier.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_free_flyer_20200406_0927_3-layers_128-neurons_results.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_manipulation_20200402_1427_3-layers_32-neurons.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_manipulation_20200402_1427_3-layers_32-neurons_classifier.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_manipulation_20200402_1427_3-layers_32-neurons_regressor.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_manipulation_20200402_1427_3-layers_32-neurons_results.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_naive_free_flyer_20200406_0928_3-layers_128-neurons.jld" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_naive_free_flyer_20200406_0928_3-layers_128-neurons_classifier.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mlopt_model_naive_free_flyer_20200406_0928_3-layers_128-neurons_regressor.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/mloptff_horizon_7.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pytorch/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../pytorch/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../regression_free_flyer_20220614_0041.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../requirements_cython.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../solvers/coco_ff.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../solvers/coco_ff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test.ipynb" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2EEBVV8wY7N8ziimB1jeGmKkTQ1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="53dfec05-d57d-4073-8937-174bc3287e88" name="变更" comment="" />
+      <created>1662150887086</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662150887086</updated>
+      <workItem from="1662150888196" duration="5000" />
+    </task>
+    <servers />
+  </component>
+</project>
