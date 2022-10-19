@@ -44,8 +44,7 @@ def paraset(N,n_obs,Qs,Rs=1000.,num_probs=10000,obs_fix=True,xg_fix=False, obs_d
         relative_path = os.getcwd()
         if obs_fix:
             if not xg_fix:
-                dataset_name = 'MPC_horizon_{}'.format(N)
-
+                dataset_name = 'MPC_horizon_{}_obs_{}'.format(N,n_obs)
 
         if not os.path.isdir(os.path.join(relative_path, 'data', dataset_name)):
                 os.mkdir(os.path.join(relative_path+'/data/'+dataset_name))

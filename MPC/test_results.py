@@ -218,7 +218,7 @@ def test_strategy(N,n_obs,obs_default=True):
     print(MPC_obj.n_strategies)
     MPC_obj.setup_network()
 
-    MPC_obj.training_params['TRAINING_ITERATIONS'] = 500
+    MPC_obj.training_params['TRAINING_ITERATIONS'] = 300
     MPC_obj.train(train_data=train_data, verbose=True)
     outfile = open(config_fn, "rb")
     config = pickle.load(outfile)

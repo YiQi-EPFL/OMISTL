@@ -202,9 +202,9 @@ class OMISTL(Solver):
         self.model = FFNet(ff_shape, activation=torch.nn.ReLU()).to(device=self.device)#把模型分配到device上#
 
         # file names for PyTorch models
-        model_fn = 'models\{}_horizon_{}.pt'
+        model_fn = 'models\{}_horizon_{}_obs_{}.pt'
         model_fn = os.path.join('../', model_fn)
-        self.model_fn = model_fn.format(self.system, self.problem.N)
+        self.model_fn = model_fn.format(self.system, self.problem.N,self.problem.n_obs)
 
     def load_network(self, fn_classifier_model):
         if os.path.exists(fn_classifier_model):
