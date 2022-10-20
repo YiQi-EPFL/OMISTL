@@ -211,7 +211,10 @@ class OMISTL(Solver):
             print('Loading presaved classifier model from {}'.format(fn_classifier_model))
             self.model.load_state_dict(torch.load(fn_classifier_model))
             self.model_fn = fn_classifier_model
-        else: print('No existing model!')
+            return True
+        else:
+            print('No existing model! Starting training model.')
+            return False
 
     def train_stl(self, train_data=None, verbose=True):
         # grab training params
