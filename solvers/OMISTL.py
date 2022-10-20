@@ -19,8 +19,8 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 
-sys.path.insert(1, os.environ['CoCo'])
-sys.path.insert(1, os.path.join(os.environ['CoCo'], 'pytorch'))
+# sys.path.insert(1, os.environ['CoCo'])
+# sys.path.insert(1, os.path.join(os.environ['CoCo'], 'pytorch'))
 
 from core import Problem, Solver
 from pytorch.models import FFNet, CNNet
@@ -202,7 +202,7 @@ class OMISTL(Solver):
         self.model = FFNet(ff_shape, activation=torch.nn.ReLU()).to(device=self.device)#把模型分配到device上#
 
         # file names for PyTorch models
-        model_fn = 'models\{}_horizon_{}_obs_{}.pt'
+        model_fn = 'models/{}_horizon_{}_obs_{}.pt'
         model_fn = os.path.join('../', model_fn)
         self.model_fn = model_fn.format(self.system, self.problem.N,self.problem.n_obs)
 

@@ -21,11 +21,10 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'#不设这个解不出#
 
 def test_strategy(N,n_obs,obs_default=True):
     N = N
-    paraset(N=N,n_obs=n_obs,Qs=1,Rs=0,num_probs=20000,obs_default=obs_default)
+    paraset(N=N, n_obs=n_obs,Qs=1,Rs=0,num_probs=20000,obs_default=False)
     #pass the value from config to dict and para
     relative_path = os.getcwd()
-    dataset_name = 'MPC_horizon_{}'.format(N)
-    # dataset_name = 'NSTL_{}_horizon_{}'.format(Qs, N)
+    dataset_name = 'MPC_horizon_{}_obs_{}'.format(N,n_obs)
     config_fn = os.path.join(relative_path, 'config', dataset_name+'.p')
 
     # config = [dataset_name, [prob_params] ,sampled_params]
@@ -78,110 +77,110 @@ def test_strategy(N,n_obs,obs_default=True):
     if obs_fix:
         obstacles = config[-1]
 
-    config_fn = os.path.join(relative_path, 'config', dataset_name+'.p')#
-
-    prob = MPC(config=config_fn)
-    #create numpy containers for data: (params, x, u, y, J*, solve_time)
-    params = {}
-    if 'x0' in sampled_params:
-        params['x0'] = np.zeros((num_probs,2*n))
-    if 'xg' in sampled_params:
-        params['xg'] = np.zeros((num_probs,2*n))
-    if 'obstacles' in sampled_params:
-        params['obstacles'] = np.zeros((num_probs, 4, n_obs))
-
-    X = np.zeros((num_probs, 2*n, N));
-    U = np.zeros((num_probs, m, N-1))
-    Y = np.zeros((num_probs, 4*n_obs, N-1)).astype(int)
-    Z = np.zeros((num_probs, 2*n_obs, N-1)).astype(int)
-
-    costs = np.zeros(num_probs)
-    solve_times = np.zeros(num_probs)
-
-    prob.sampled_params = ['x0', 'xg', 'obstacles']
-
-    #solving MICP
-    ii_toggle = 0
-    obs_new_ct = 5
-    ii=0
-    obstacles = config[-1]
-
-    if obs_fix:
-        for ii in tqdm(range(num_probs)):
-            x0 = findIC(obstacles, posmin, posmax, velmin, velmax)
-            params['obstacles'][ii,:] = np.reshape(np.concatenate(obstacles, axis=0), (n_obs,4)).T
-            p_dict = {}
-            params['x0'][ii,:] = x0
-            xg= findIC(obstacles, posmin, posmax, velmin, velmax)
-            params['xg'][ii,:] = xg
-
-            p_dict['x0'] = params['x0'][ii,:]
-            p_dict['xg'] = params['xg'][ii,:]
-            p_dict['obstacles'] = params['obstacles'][ii,:]
-
-            prob_success = False
-            try:
-                # with time_limit(20):
-                prob_success, cost, solve_time, optvals = prob.solve_stl(p_dict, solver=cp.GUROBI)
-            except (KeyboardInterrupt, SystemExit):
-                raise
-            except:
-                print('solver failed at '.format(ii))
-
-            if prob_success:
-                costs[ii] = cost; solve_times[ii] = solve_time
-                X[ii,:,:], U[ii,:,:], Y[ii,:,:], Z[ii,:,:] = optvals
-                ii += 1
-    else:
-        print('choose to fix obstalce')
-
-    ## shuffle the data because of the spatial orders
-    num_train = int(num_probs*0.9)
-    arr = np.arange(num_probs)
-    np.random.shuffle(arr)
-
-    if 'x0' in sampled_params:
-        params['x0'] = params['x0'][arr]
-    if 'xg' in sampled_params:
-        params['xg'] = params['xg'][arr]
-    if 'obstacles' in sampled_params:
-        params['obstacles'] = params['obstacles'][arr]
-
-    costs = costs[arr]
-    solve_times = solve_times[arr]
-
-    X = X[arr]
-    U = U[arr]
-    Y = Y[arr]
-    Z = Z[arr]
-
-    train_params = {}; test_params = {}
-    if 'x0' in sampled_params:
-        train_params['x0'] = params['x0'][:num_train,:]
-        test_params['x0'] = params['x0'][num_train:,:]
-    if 'obstacles' in sampled_params:
-        train_params['obstacles'] = params['obstacles'][:num_train,:]
-        test_params['obstacles'] = params['obstacles'][num_train:,:]
-    if 'xg' in sampled_params:
-        train_params['xg'] = params['xg'][:num_train,:]
-        test_params['xg'] = params['xg'][num_train:,:]
-
-    train_data = [train_params]
-    train_data += [X[:num_train,:,:], U[:num_train,:,:], Y[:num_train,:,:],Z[:num_train,:,:]]
-    train_data += [costs[:num_train], solve_times[:num_train]]
-
-    test_data = [test_params]
-    test_data += [X[num_train:,:,:], U[num_train:,:,:], Y[num_train:,:,:], Z[:num_train,:,:]]
-    test_data += [costs[num_train:], solve_times[num_train:]]
-
-    train_file = open(train_fn,'wb')
-    pickle.dump(train_data,train_file); train_file.close()
-
-    test_file = open(test_fn, 'wb')
-    pickle.dump(test_data,test_file); test_file.close()
+    # config_fn = os.path.join(relative_path, 'config', dataset_name+'.p')#
+    #
+    # prob = MPC(config=config_fn)
+    # #create numpy containers for data: (params, x, u, y, J*, solve_time)
+    # params = {}
+    # if 'x0' in sampled_params:
+    #     params['x0'] = np.zeros((num_probs,2*n))
+    # if 'xg' in sampled_params:
+    #     params['xg'] = np.zeros((num_probs,2*n))
+    # if 'obstacles' in sampled_params:
+    #     params['obstacles'] = np.zeros((num_probs, 4, n_obs))
+    #
+    # X = np.zeros((num_probs, 2*n, N));
+    # U = np.zeros((num_probs, m, N-1))
+    # Y = np.zeros((num_probs, 4*n_obs, N-1)).astype(int)
+    # Z = np.zeros((num_probs, 2*n_obs, N-1)).astype(int)
+    #
+    # costs = np.zeros(num_probs)
+    # solve_times = np.zeros(num_probs)
+    #
+    # prob.sampled_params = ['x0', 'xg', 'obstacles']
+    #
+    # #solving MICP
+    # ii_toggle = 0
+    # obs_new_ct = 5
+    # ii=0
+    # obstacles = config[-1]
+    #
+    # if obs_fix:
+    #     for ii in tqdm(range(num_probs)):
+    #         x0 = findIC(obstacles, posmin, posmax, velmin, velmax)
+    #         params['obstacles'][ii,:] = np.reshape(np.concatenate(obstacles, axis=0), (n_obs,4)).T
+    #         p_dict = {}
+    #         params['x0'][ii,:] = x0
+    #         xg= findIC(obstacles, posmin, posmax, velmin, velmax)
+    #         params['xg'][ii,:] = xg
+    #
+    #         p_dict['x0'] = params['x0'][ii,:]
+    #         p_dict['xg'] = params['xg'][ii,:]
+    #         p_dict['obstacles'] = params['obstacles'][ii,:]
+    #
+    #         prob_success = False
+    #         try:
+    #             # with time_limit(20):
+    #             prob_success, cost, solve_time, optvals = prob.solve_stl(p_dict, solver=cp.GUROBI)
+    #         except (KeyboardInterrupt, SystemExit):
+    #             raise
+    #         except:
+    #             print('solver failed at '.format(ii))
+    #
+    #         if prob_success:
+    #             costs[ii] = cost; solve_times[ii] = solve_time
+    #             X[ii,:,:], U[ii,:,:], Y[ii,:,:], Z[ii,:,:] = optvals
+    #             ii += 1
+    # else:
+    #     print('choose to fix obstalce')
+    #
+    # ## shuffle the data because of the spatial orders
+    # num_train = int(num_probs*0.9)
+    # arr = np.arange(num_probs)
+    # np.random.shuffle(arr)
+    #
+    # if 'x0' in sampled_params:
+    #     params['x0'] = params['x0'][arr]
+    # if 'xg' in sampled_params:
+    #     params['xg'] = params['xg'][arr]
+    # if 'obstacles' in sampled_params:
+    #     params['obstacles'] = params['obstacles'][arr]
+    #
+    # costs = costs[arr]
+    # solve_times = solve_times[arr]
+    #
+    # X = X[arr]
+    # U = U[arr]
+    # Y = Y[arr]
+    # Z = Z[arr]
+    #
+    # train_params = {}; test_params = {}
+    # if 'x0' in sampled_params:
+    #     train_params['x0'] = params['x0'][:num_train,:]
+    #     test_params['x0'] = params['x0'][num_train:,:]
+    # if 'obstacles' in sampled_params:
+    #     train_params['obstacles'] = params['obstacles'][:num_train,:]
+    #     test_params['obstacles'] = params['obstacles'][num_train:,:]
+    # if 'xg' in sampled_params:
+    #     train_params['xg'] = params['xg'][:num_train,:]
+    #     test_params['xg'] = params['xg'][num_train:,:]
+    #
+    # train_data = [train_params]
+    # train_data += [X[:num_train,:,:], U[:num_train,:,:], Y[:num_train,:,:],Z[:num_train,:,:]]
+    # train_data += [costs[:num_train], solve_times[:num_train]]
+    #
+    # test_data = [test_params]
+    # test_data += [X[num_train:,:,:], U[num_train:,:,:], Y[num_train:,:,:], Z[:num_train,:,:]]
+    # test_data += [costs[num_train:], solve_times[num_train:]]
+    #
+    # train_file = open(train_fn,'wb')
+    # pickle.dump(train_data,train_file); train_file.close()
+    #
+    # test_file = open(test_fn, 'wb')
+    # pickle.dump(test_data,test_file); test_file.close()
 
     relative_path = os.getcwd()
-    dataset_name = 'MPC_horizon_{}'.format(N)
+    dataset_name = 'MPC_horizon_{}_obs_{}'.format(N,n_obs)
     # dataset_name = 'NSTL_{}_horizon_{}'.format(Qs, N)
     config_fn = os.path.join(relative_path, 'config', dataset_name + '.p')
     prob = MPC(config=config_fn)  # use default config, pass different config file oth.
@@ -213,13 +212,17 @@ def test_strategy(N,n_obs,obs_default=True):
 
     MPC_obj = OMISTL(system, prob, prob_features)
 
-    n_features = 33
+    n_features = 2*prob.n*(len(prob_features)-1)+n_obs*4+n_obs
     MPC_obj.construct_strategies(n_features, train_data)
-    print(MPC_obj.n_strategies)
+    print('nubmber of strategies:'+ str(MPC_obj.n_strategies))
+    print('n_obs: '+ str(n_obs))
+    print('N: '+ str(N))
     MPC_obj.setup_network()
+    fn_saved = 'D:\Curious\OMISTL\\models\\MPC_horizon_{}_obs_{}.pt'.format(N, n_obs)
+    MPC_obj.load_network(fn_saved)
 
-    MPC_obj.training_params['TRAINING_ITERATIONS'] = 300
-    MPC_obj.train(train_data=train_data, verbose=True)
+    # MPC_obj.training_params['TRAINING_ITERATIONS'] = 300
+    # MPC_obj.train(train_data=train_data, verbose=True)
     outfile = open(config_fn, "rb")
     config = pickle.load(outfile)
     velmin = -0.2
@@ -233,9 +236,9 @@ def test_strategy(N,n_obs,obs_default=True):
     min_box_size = 0.25
     box_buffer = 0.025
     border_size = 0.05
-
     obstacles = config[-1]
-    n_test = 200
+    num_probs = config[4]
+    n_test =num_probs * 0.1
     framework = 'OMISTL'
     n_succ = 0
     count = 0
@@ -287,8 +290,22 @@ def test_strategy(N,n_obs,obs_default=True):
     total_time_ip = np.array(total_time_ip)
 
     percentage = 100 * float(n_succ) / float(count)
-    dict = {'framework': framework, 'costs': costs, 'total_time_ML': total_time_ML, 'num_solves': num_solves,
-            'costs_ip': costs_ip, 'total_time_ip': total_time_ip, 'cost_ratios': cost_ratios, 'percentage': percentage}
+    dict = {'framework': framework, 'N': N, 'n_obs': n_obs, 'costs': costs, 'total_time_ML': total_time_ML,
+            'num_solves': num_solves, 'costs_ip': costs_ip, 'total_time_ip': total_time_ip, 'cost_ratios': cost_ratios,
+            'strategies': MPC_obj.n_strategies, 'percentage': percentage, }
     f_save = open(dataset_fn + '/result.pkl', 'wb')
     pickle.dump(dict, f_save)
     f_save.close()
+
+def load_result(N,n_obs):
+    N=N
+    n_obs=n_obs
+    relative_path = os.getcwd()
+    dataset_name = 'MPC_horizon_{}_obs_{}'.format(N, n_obs)
+    config_fn = os.path.join(relative_path, 'config', dataset_name + '.p')
+    relative_path = os.getcwd()
+    dataset_fn = relative_path + '/data/' + dataset_name
+    f_read = open(dataset_fn + '/result.pkl', 'rb')
+    results = pickle.load(f_read)
+    f_read.close()
+    return results
