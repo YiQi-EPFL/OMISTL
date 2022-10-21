@@ -18,7 +18,7 @@ from test_results import load_result
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'#不设这个解不出#
 
 
-def samping(N,n_obs):
+def sampling(N,n_obs):
     N= N
     n_obs = n_obs
     paraset(N=N, n_obs=n_obs,Qs=1,Rs=0,num_probs=20000,obs_default=False)
