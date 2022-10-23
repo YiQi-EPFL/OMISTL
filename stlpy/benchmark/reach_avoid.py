@@ -23,6 +23,7 @@ class ReachAvoid(BenchmarkScenario):
         self.goal_bounds = goal_bounds
         self.obstacle_bounds = obstacle_bounds
         self.T = T
+        self.spec_name = 'ReachAvoid'
 
     def GetSpecification(self):
         # Goal Reaching
