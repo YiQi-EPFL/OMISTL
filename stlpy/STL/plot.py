@@ -53,7 +53,9 @@ def reach_avoid_plot(optvals,scenario,prob_params):
     ax = plt.gca()
     ax.margins(0)
     ax.set(xlim=(posmin[0],posmax[0]), ylim=(posmin[1],posmax[1]))
-    plt.show()
+
+    figure = ax.get_figure()
+    return figure
 
 
 def multi_targets_plot(optvals,scenario,prob_params):
@@ -100,4 +102,5 @@ def multi_targets_plot(optvals,scenario,prob_params):
     ax = plt.gca()
     ax.margins(0)
     ax.set(xlim=(posmin[0],posmax[0]), ylim=(posmin[1],posmax[1]))
-    plt.show()
+    figure = ax.get_figure()
+    return figure

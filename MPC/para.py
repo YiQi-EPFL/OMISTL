@@ -4,7 +4,7 @@ import pickle
 from utils import *
 import numpy as np
 
-def paraset(N,n_obs,Qs,Rs=1000.,num_probs=10000,obs_fix=True,xg_fix=False, obs_default = True):
+def paraset(N,n_obs,Qs,Rs=1000.,num_probs=10000,obs_fix=True,xg_fix=False, obs_default = False):
 
         d=2
         N = N

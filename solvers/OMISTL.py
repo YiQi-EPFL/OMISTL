@@ -501,7 +501,7 @@ class OMISTL(Solver):
             self.problem.init_pred_problem(recover_solution)
             prob_success, cost, solve_time, optvals = self.problem.solve_pred(prob_params, solver=cp.GUROBI, verbose=verbose)
             if prob_success:
-                print('prediction is success:' + str(prob_success))
+                # print('prediction is success:' + str(prob_success))
                 break
             else:
                 if n_eval == max_evals:

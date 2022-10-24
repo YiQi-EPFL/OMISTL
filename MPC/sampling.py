@@ -18,10 +18,10 @@ from test_results import load_result
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'#不设这个解不出#
 
 
-def sampling(N,n_obs):
+def sampling(N,n_obs,num_prob=20000):
     N= N
     n_obs = n_obs
-    paraset(N=N, n_obs=n_obs,Qs=1,Rs=0,num_probs=20000,obs_default=False)
+    paraset(N=N, n_obs=n_obs,Qs=1,Rs=0,num_probs=num_prob,obs_default=False)
     # pass the value from config to dict and para
     relative_path = os.getcwd()
     dataset_name = 'MPC_horizon_{}_obs_{}'.format(N, n_obs)

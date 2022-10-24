@@ -87,7 +87,7 @@ def sampling_stl(spec_name,spec,N):
         if prob_success:
             vector_data[ii] = vector
             integer_data[ii] = integer
-            costs[ii] = cost;
+            costs[ii] = cost
             solve_times[ii] = solve_time
             X[ii, :, :], U[ii, :, :], Y[ii, :, :] = optvals
             ii += 1

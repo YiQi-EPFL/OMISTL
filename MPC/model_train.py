@@ -97,7 +97,7 @@ def train(N,n_obs):
     fn_saved = '..\\models\\MPC_horizon_{}_obs_{}.pt'.format(N, n_obs)
     Model_exist = MPC_obj.load_network(fn_saved)
     if Model_exist:
-        quit()
+        print('model already exist')
     else:
         MPC_obj.training_params['TRAINING_ITERATIONS'] = 300
         MPC_obj.train(train_data=train_data, verbose=True)
