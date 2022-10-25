@@ -191,6 +191,7 @@ class MPC(Problem):
         u = cp.Variable((self.m,self.N-1))  # control
         # y = cp.Variable((4 * self.n_obs, self.N - 1), boolean=True)
         y = cp.Variable((4 * self.n_obs, self.N-1))
+
         z = cp.Variable((self.n_obs*num_y, self.N-1), boolean=True) #sos1 encoding#
         self.stl_prob_variables = {'x':x, 'u':u, 'y':y, 'z':z}
         # self.stl_prob_variables = {'x': x, 'u': u, 'y': y}
@@ -225,7 +226,6 @@ class MPC(Problem):
               cons += [-x[i_dim,i_t+1] <= -o_max + M-M*y[yvar_max,i_t]]
 
         #add sos1 constraints for each timestep
-
             # for i_t in range(self.N-1):
             #     lambd, sos1_code, sos1_cons = addsos1constraint(self.n * 2)
             #     cons += sos1_cons
@@ -233,7 +233,9 @@ class MPC(Problem):
             #     cons += [z[2 * i_obs: 2 * (i_obs + 1), i_t] == sos1_code]
 
           for i_t in range(self.N-1):
-            lambd = y[4*i_obs:4*(i_obs+1), i_t]
+            lambd = cp.Variable(4)
+            # lambd = y[4*i_obs:4*(i_obs+1), i_t]
+            cons += [sum(lambd) == 1]
             a = GrayCode()
             X = a.getGray(num_y)
             Xlist = []
@@ -246,7 +248,7 @@ class MPC(Problem):
 
             for i in range(2*self.n):
                 cons += [lambd[i] >= 0]
-            cons += [sum(lambd) == 1]
+                cons += [lambd[i] <= 1]
 
             for j in range(0, num_y):
                 lambda_sum1 = 0
@@ -261,6 +263,7 @@ class MPC(Problem):
                         break
                 cons += [lambda_sum1 <= z[j+i_obs*num_y, i_t]]
                 cons += [lambda_sum2 <= 1 - z[j+i_obs*num_y, i_t]]
+            cons += [y[4 * i_obs:4 * (i_obs + 1), i_t] == lambd]
 
         # Region bounds
         for kk in range(self.N):

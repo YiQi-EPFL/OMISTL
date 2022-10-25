@@ -40,7 +40,6 @@ def reach_avoid_plot(optvals,scenario,prob_params):
 
     plt.axis('scaled')
 
-
     x0 = prob_params['x0']
     circle = plt.Circle((x0[0],x0[1]), 0.04, fc='red',ec="red")
     plt.gca().add_patch(circle)

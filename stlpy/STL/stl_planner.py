@@ -150,15 +150,16 @@ class STL_planner(Problem):
             # See: https://docs.mosek.com/9.1/dotnetfusion/param-groups.html#doc-param-groups
             if not msk_param_dict:
                 msk_param_dict = {}
-                rel_path = os.getcwd()
-                with open(os.path.join(rel_path, 'config/mosek.yaml')) as file:
+                path = '../../solver_config/mosek.yaml'
+                with open(path) as file:
                     msk_param_dict = yaml.load(file, Loader=yaml.FullLoader)
 
             self.stl_prob.solve(solver=solver, mosek_params=msk_param_dict, verbose=verbose)
         elif solver == cp.GUROBI:
             rel_path = os.getcwd()
             grb_param_dict = {}
-            with open(os.path.join(rel_path, 'config/gurobi.yaml')) as file:
+            path = '../../solver_config/gurobi.yaml'
+            with open(path) as file:
                 grb_param_dict = yaml.load(file, Loader=yaml.FullLoader)
                 self.stl_prob.solve(solver=solver, **grb_param_dict, verbose=verbose)
 
@@ -370,15 +371,16 @@ class STL_planner(Problem):
             # See: https://docs.mosek.com/9.1/dotnetfusion/param-groups.html#doc-param-groups
             if not msk_param_dict:
                 msk_param_dict = {}
-                rel_path = os.getcwd()
-                with open(os.path.join(rel_path, 'config/mosek.yaml')) as file:
+                path = '../../solver_config/mosek.yaml'
+                with open(path) as file:
                     msk_param_dict = yaml.load(file, Loader=yaml.FullLoader)
 
             self.pred_prob.solve(solver=solver, mosek_params=msk_param_dict, verbose=verbose)
         elif solver == cp.GUROBI:
             rel_path = os.getcwd()
             grb_param_dict = {}
-            with open(os.path.join(rel_path, 'config/gurobi.yaml')) as file:
+            path = '../../solver_config/gurobi.yaml'
+            with open(path) as file:
                 grb_param_dict = yaml.load(file, Loader=yaml.FullLoader)
                 self.pred_prob.solve(solver=solver, **grb_param_dict, verbose=verbose)
 
@@ -399,55 +401,6 @@ class STL_planner(Problem):
         self.cons = None
         self.integer = None
         self.vector = None
-
-        return prob_success, cost, solve_time, (x_star, u_star, y_star)
-
-
-    def solve_micp(self, params, solver=cp.MOSEK, msk_param_dict=None):
-        """High-level method to solve parameterized MICP.
-
-        Args:
-            params: Dict of param values; keys are self.sampled_params,
-                values are numpy arrays of specific param values.
-            solver: cvxpy Solver object; defaults to Mosek.
-        """
-        # set cvxpy parameters to their values
-        for p in self.sampled_params:  # 采样一个点的para, 每个para都传递给binprob来求解（bin中有x,u,y）#
-            self.bin_prob_parameters[p].value = params[p]
-
-        ## TODO(pculbertson): allow different sets of params to vary.
-
-        # solve problem with cvxpy
-        prob_success, cost, solve_time = False, np.Inf, np.Inf
-        if solver == cp.MOSEK:
-            # See: https://docs.mosek.com/9.1/dotnetfusion/param-groups.html#doc-param-groups
-            if not msk_param_dict:
-                msk_param_dict = {}
-                with open(os.path.join(os.environ['CoCo'], 'config/mosek.yaml')) as file:
-                    msk_param_dict = yaml.load(file, Loader=yaml.FullLoader)
-
-            self.bin_prob.solve(solver=solver, mosek_params=msk_param_dict)
-        elif solver == cp.GUROBI:
-            grb_param_dict = {}
-            with open(os.path.join(os.environ['CoCo'], 'config/gurobi.yaml')) as file:
-                grb_param_dict = yaml.load(file, Loader=yaml.FullLoader)
-
-            self.bin_prob.solve(solver=solver, **grb_param_dict)
-        # solve_time = self.bin_prob.solver_stats.solve_time
-        solve_time = self.bin_prob._solve_time
-
-        x_star, u_star, y_star = None, None, None
-        if self.bin_prob.status in ['optimal', 'optimal_inaccurate'] and self.bin_prob.status not in ['infeasible',
-                                                                                                      'unbounded']:
-            prob_success = True
-            cost = self.bin_prob.value
-            x_star = self.bin_prob_variables['x'].value
-            u_star = self.bin_prob_variables['u'].value
-            y_star = self.bin_prob_variables['y'].value.astype(int)
-
-        # Clear any saved params
-        for p in self.sampled_params:
-            self.bin_prob_parameters[p].value = None
 
         return prob_success, cost, solve_time, (x_star, u_star, y_star)
 
@@ -506,7 +459,6 @@ class STL_planner(Problem):
 
         # x0, xg = params['x0'], params['xg']
         # obstacles = params['obstacles']
-
         x0 = params['x0']
 
 
